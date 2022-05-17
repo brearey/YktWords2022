@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YktWords2021">
         <activity
+            android:name=".DigitalsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainMenuActivity"
             android:exported="false" />
         <activity

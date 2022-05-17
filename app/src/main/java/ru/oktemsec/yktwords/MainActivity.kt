@@ -55,7 +55,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        mp.start()
+        if (!mp.isPlaying) {
+            mp.start()
+        }
     }
 
     override fun onStop() {
