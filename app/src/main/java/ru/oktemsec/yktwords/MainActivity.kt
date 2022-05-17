@@ -7,19 +7,24 @@ import android.media.Image
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var mp:MediaPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Фоновая музыка включается при старте приложения
-        val mp:MediaPlayer = MediaPlayer.create(this, R.raw.stars)
+        mp = MediaPlayer.create(this, R.raw.stars)
         mp.setVolume(0.5f, 0.5f)
         mp.isLooping = true
         mp.start()
@@ -40,6 +45,44 @@ class MainActivity : AppCompatActivity() {
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
             start()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (mp.isPlaying) { mp.pause() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mp.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (mp.isPlaying) {
+            try {
+                mp.stop()
+                mp.prepare()
+                mp.seekTo(0)
+            }
+            catch (t:Throwable) {
+                Toast.makeText(this, t.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (mp.isPlaying) {
+            try {
+                mp.stop()
+                mp.prepare()
+                mp.seekTo(0)
+            }
+            catch (t:Throwable) {
+                Toast.makeText(this, t.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
