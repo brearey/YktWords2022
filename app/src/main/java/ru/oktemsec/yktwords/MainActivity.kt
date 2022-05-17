@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         //Фоновая музыка включается при старте приложения
         val mp:MediaPlayer = MediaPlayer.create(this, R.raw.stars)
         mp.setVolume(0.5f, 0.5f)
+        mp.isLooping = true
         mp.start()
 
         //Анимация кнопки старт
