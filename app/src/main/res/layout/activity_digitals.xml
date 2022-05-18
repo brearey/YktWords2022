@@ -135,6 +135,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:padding="12dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,21 +144,24 @@
         <ImageView
             android:id="@+id/toggle_music"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/music_toggle" />
 
         <ImageView
             android:id="@+id/button_home"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/home" />
 
         <ImageView
             android:id="@+id/toggle_sound"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/sound_toggle" />
     </LinearLayout>

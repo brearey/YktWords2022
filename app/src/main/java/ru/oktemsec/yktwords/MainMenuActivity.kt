@@ -12,6 +12,8 @@ import android.widget.Toast
 class MainMenuActivity : AppCompatActivity() {
 
     lateinit var mp: MediaPlayer
+    // флажок звука
+    var toggleMusc:Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,23 @@ class MainMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Функциональные кнопки внизу
+        val toggleMusicButton:ImageView = findViewById(R.id.toggle_music)
+        val buttonHome:ImageView = findViewById(R.id.button_home)
+        val toggleSoundButton:ImageView = findViewById(R.id.toggle_sound)
+
+        // Нажатие функциональных кнопок
+        // Пауза музыки
+        toggleMusicButton.setOnClickListener {
+            clickAnimation(it, 1.1f, 100)
+            if (toggleMusc) {
+                mp.pause()
+                toggleMusc = false
+            } else {
+                mp.start()
+                toggleMusc = true
+            }
+        }
     }
 
     override fun onPause() {
