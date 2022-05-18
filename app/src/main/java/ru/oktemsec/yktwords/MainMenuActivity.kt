@@ -1,11 +1,13 @@
 package ru.oktemsec.yktwords
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.Toast
 
@@ -96,19 +98,17 @@ class MainMenuActivity : AppCompatActivity() {
     }
 
 
-    fun clickAnimation(v: View, value:Float, _duration:Long) {
-        ObjectAnimator.ofFloat(v, "scaleX", value).apply {
-            duration = _duration
-            repeatCount = 1
-            repeatMode = ObjectAnimator.REVERSE
-            start()
+    fun clickAnimation(v:View, value:Float, _duration:Long) {
+        val valAnimator = ValueAnimator.ofFloat(1f, value)
+        valAnimator.addUpdateListener {
+            val value = it.animatedValue as Float
+            v.scaleX = value
+            v.scaleY = value
         }
-
-        ObjectAnimator.ofFloat(v, "scaleY", value).apply {
-            duration = _duration
-            repeatCount = 1
-            repeatMode = ObjectAnimator.REVERSE
-            start()
-        }
+        valAnimator.interpolator = LinearInterpolator()
+        valAnimator.duration = _duration
+        valAnimator.repeatCount = 1
+        valAnimator.repeatMode = ValueAnimator.REVERSE
+        valAnimator.start()
     }
 }
