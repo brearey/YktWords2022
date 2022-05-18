@@ -29,10 +29,19 @@ class MainMenuActivity : AppCompatActivity() {
 
         //Объекты кнопок категорий (ImageView)
         val catDigitalButton: ImageView = findViewById(R.id.cat_digitals_button)
+        val catAnimalsButton: ImageView = findViewById(R.id.cat_animals_button)
 
         catDigitalButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             val intent = Intent(this, DigitalsActivity::class.java).apply {
+                putExtra("ru.oktemsec.yktwords.MESSAGE", "my message")
+            }
+            startActivity(intent)
+        }
+
+        catAnimalsButton.setOnClickListener {
+            clickAnimation(it, 1.1f, 100)
+            val intent = Intent(this, AnimalsActivity::class.java).apply {
                 putExtra("ru.oktemsec.yktwords.MESSAGE", "my message")
             }
             startActivity(intent)

@@ -90,9 +90,7 @@ class MainActivity : AppCompatActivity() {
 
     // Кнопка перехода в главное меню
     fun gotoMainMenu(view: View) {
-        val intent = Intent(this, MainMenuActivity::class.java).apply {
-            putExtra("ru.oktemsec.yktwords.MESSAGE", "my message")
-        }
+        val intent = Intent(this, MainMenuActivity::class.java)
         startActivity(intent)
     }
 }

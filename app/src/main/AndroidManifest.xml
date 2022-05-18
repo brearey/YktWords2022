@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YktWords2021">
         <activity
+            android:name=".AnimalsActivity"
+            android:exported="false" />
+        <activity
             android:name=".DigitalsActivity"
             android:exported="false" />
         <activity
