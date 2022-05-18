@@ -1,6 +1,7 @@
 package ru.oktemsec.yktwords
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,6 +28,10 @@ class MainMenuActivity : AppCompatActivity() {
 
         catDigitalButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
+            val intent = Intent(this, DigitalsActivity::class.java).apply {
+                putExtra("ru.oktemsec.yktwords.MESSAGE", "my message")
+            }
+            startActivity(intent)
         }
 
     }
