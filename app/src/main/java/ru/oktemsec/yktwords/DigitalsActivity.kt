@@ -1,9 +1,11 @@
 package ru.oktemsec.yktwords
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -12,6 +14,11 @@ class DigitalsActivity : AppCompatActivity() {
 
     lateinit var mp: MediaPlayer
     lateinit var mpVoice: MediaPlayer
+    // флажок звука
+    var toggleSound:Boolean = true
+    var toggleMusc:Boolean = true
+    // Volume of voice
+    var volume:Float = 1f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +30,9 @@ class DigitalsActivity : AppCompatActivity() {
         mp.isLooping = true
         mp.start()
 
-        // Сыыппаралар
+        // Звук в начале "Название категории"
         mpVoice = MediaPlayer.create(this, R.raw.digitals)
-        mpVoice.setVolume(0.15f, 0.15f)
+        mpVoice.setVolume(volume, volume)
         if (!mpVoice.isPlaying) { mpVoice.start() }
 
         // Цифры кнопки
@@ -40,11 +47,46 @@ class DigitalsActivity : AppCompatActivity() {
         val nineButton:ImageView = findViewById(R.id.nine_image)
         val zeroButton:ImageView = findViewById(R.id.zero_image)
 
-        //Нажатие кнопок
+        // Функциональные кнопки внизу
+        val toggleMusicButton:ImageView = findViewById(R.id.toggle_music)
+        val buttonHome:ImageView = findViewById(R.id.button_home)
+        val toggleSoundButton:ImageView = findViewById(R.id.toggle_sound)
+
+        // Нажатие функциональных кнопок
+        // Пауза музыки
+        toggleMusicButton.setOnClickListener {
+            clickAnimation(it, 1.1f, 100)
+            if (toggleMusc) {
+                mp.pause()
+                toggleMusc = false
+            } else {
+                mp.start()
+                toggleMusc = true
+            }
+        }
+        // Переход в меню категорий
+        buttonHome.setOnClickListener {
+            clickAnimation(it, 1.1f, 100)
+            startActivity(Intent(this, MainMenuActivity::class.java))
+        }
+        // Выключение/включение звука голоса Зины
+        toggleSoundButton.setOnClickListener {
+            clickAnimation(it, 1.1f, 100)
+            if (toggleSound) {
+                volume = 0f
+                toggleSound = false
+            } else {
+                volume = 1f
+                toggleSound = true
+            }
+        }
+
+        //Нажатие кнопок цифр
         oneButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.one)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -52,6 +94,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.two)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -59,6 +102,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.three)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -66,6 +110,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.four)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -73,6 +118,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.five)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -80,6 +126,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.six)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -87,6 +134,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.seven)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -94,6 +142,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.eight)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -101,6 +150,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.nine)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
 
@@ -108,6 +158,7 @@ class DigitalsActivity : AppCompatActivity() {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
             mpVoice = MediaPlayer.create(this, R.raw.zero)
+            mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
     }
