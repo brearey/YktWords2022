@@ -25,14 +25,14 @@ class MainActivity : AppCompatActivity() {
 
         //Фоновая музыка включается при старте приложения
         mp = MediaPlayer.create(this, R.raw.stars)
-        mp.setVolume(0.5f, 0.5f)
+        mp.setVolume(0.4f, 0.4f)
         mp.isLooping = true
         mp.start()
 
         //Анимация кнопки старт
         val startButton:ImageView = findViewById(R.id.startButton)
-        val scale:Float = 1.15f;
-        val durationScale:Long = 1000;
+        val scale = 1.15f
+        val durationScale:Long = 1000
         ObjectAnimator.ofFloat(startButton, "scaleX", scale).apply {
             duration = durationScale
             repeatCount = ObjectAnimator.INFINITE
@@ -42,6 +42,17 @@ class MainActivity : AppCompatActivity() {
 
         ObjectAnimator.ofFloat(startButton, "scaleY", scale).apply {
             duration = durationScale
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+            start()
+        }
+
+        // Анимация детей
+        val kids:ImageView = findViewById(R.id.kids)
+        val translationX = 20f
+        val durationTranslationX:Long = 3000
+        ObjectAnimator.ofFloat(kids, "translationX", translationX).apply {
+            duration = durationTranslationX
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
             start()
@@ -89,7 +100,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Кнопка перехода в главное меню
-    fun gotoMainMenu(view: View) {
+    fun gotoMainMenu(view:View) {
         val intent = Intent(this, MainMenuActivity::class.java)
         startActivity(intent)
     }

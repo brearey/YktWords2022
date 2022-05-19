@@ -31,7 +31,7 @@ class AnimalsActivity : AppCompatActivity() {
         mp.start()
 
         // Звук в начале "Название категории"
-        mpVoice = MediaPlayer.create(this, R.raw.numbers)
+        mpVoice = MediaPlayer.create(this, R.raw.animals)
         mpVoice.setVolume(volume, volume)
         if (!mpVoice.isPlaying) { mpVoice.start() }
 
@@ -84,7 +84,7 @@ class AnimalsActivity : AppCompatActivity() {
         foxButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.one)
+            mpVoice = MediaPlayer.create(this, R.raw.fox)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -92,7 +92,7 @@ class AnimalsActivity : AppCompatActivity() {
         kurochkaButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.two)
+            mpVoice = MediaPlayer.create(this, R.raw.chiken)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -100,7 +100,7 @@ class AnimalsActivity : AppCompatActivity() {
         koalaButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.three)
+            mpVoice = MediaPlayer.create(this, R.raw.koala)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -108,7 +108,7 @@ class AnimalsActivity : AppCompatActivity() {
         krabButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.four)
+            mpVoice = MediaPlayer.create(this, R.raw.krab)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -116,7 +116,7 @@ class AnimalsActivity : AppCompatActivity() {
         kitButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.five)
+            mpVoice = MediaPlayer.create(this, R.raw.kit)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -124,7 +124,7 @@ class AnimalsActivity : AppCompatActivity() {
         ezikButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.six)
+            mpVoice = MediaPlayer.create(this, R.raw.ezik)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -132,7 +132,7 @@ class AnimalsActivity : AppCompatActivity() {
         tigerButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.seven)
+            mpVoice = MediaPlayer.create(this, R.raw.tiger)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -140,7 +140,7 @@ class AnimalsActivity : AppCompatActivity() {
         pigButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.eight)
+            mpVoice = MediaPlayer.create(this, R.raw.pig)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -148,7 +148,7 @@ class AnimalsActivity : AppCompatActivity() {
         cowButton.setOnClickListener {
             clickAnimation(it, 1.1f, 100)
             mpVoice.reset()
-            mpVoice = MediaPlayer.create(this, R.raw.nine)
+            mpVoice = MediaPlayer.create(this, R.raw.korova)
             mpVoice.setVolume(volume, volume)
             mpVoice.start()
         }
@@ -199,9 +199,9 @@ class AnimalsActivity : AppCompatActivity() {
     fun clickAnimation(v: View, value:Float, _duration:Long) {
         val valAnimator = ValueAnimator.ofFloat(1f, value)
         valAnimator.addUpdateListener {
-            val value = it.animatedValue as Float
-            v.scaleX = value
-            v.scaleY = value
+            val myValue = it.animatedValue as Float
+            v.scaleX = myValue
+            v.scaleY = myValue
         }
         valAnimator.interpolator = LinearInterpolator()
         valAnimator.duration = _duration
