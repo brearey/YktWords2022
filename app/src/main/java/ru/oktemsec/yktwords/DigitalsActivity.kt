@@ -33,7 +33,7 @@ class DigitalsActivity : AppCompatActivity() {
         mp.start()
 
         // Звук в начале "Название категории"
-        mpVoice = MediaPlayer.create(this, R.raw.digitals)
+        mpVoice = MediaPlayer.create(this, R.raw.numbers)
         mpVoice.setVolume(volume, volume)
         if (!mpVoice.isPlaying) { mpVoice.start() }
 
